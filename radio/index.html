@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Bootstrap 101 Template</title>
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        </head>
+    <body>
+        <h1 class="text-center">Enclave Freedom Radio</h1>
+        <h2 class="text-center">Rebuilding America's Future Today</h2>
+        <p><img src="img/flag.jpg" class="img-responsive center-block"/></p>
+        <audio class="center-block" id="audio1" src="" style="width: 100%; max-width: 758px;" autoplay controls>
+            <p>Your browser does not support the <code>audio</code> element </p>
+        </audio>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            jQuery(function ($) {
+                var supportsAudio = !!document.createElement('audio').canPlayType;
+                if (supportsAudio) {
+                    var index = 0,
+                        playing = false,
+                        mediaPath = 'music/',
+                        extension = '',
+                        tracks = [
+                            {
+                                "track": 1,
+                                "file": "Battle_Hymn_of_the_Republic"
+                            }, 
+                            {
+                                "track": 2,
+                                "file": "Dixie"
+                            }, 
+                            {
+                                "track": 3,
+                                "file": "Hail_Columbia"
+                            }, 
+
+                            {
+                                "track": 4,
+                                "file": "FO3_JHE_Speech_Baseball"
+                            }, 
+                            {
+                                "track": 5,
+                                "file": "Halls_of_Montezuma"
+                            }, 
+
+                            {
+                                "track": 6,
+                                "file": "My_Country_Tis_of_Thee"
+                            }, 
+                            {
+                                "track": 7,
+                                "file": "Stars_and_Stripes_Forever"
+                            }, 
+                            {
+                                "track": 8,
+                                "file": "FO3_JHE_Speech_ChildrenOfTheWasteland"
+                            }, 
+                            {
+                                "track": 9,
+                                "file": "The_Washington_Post"
+                            }, 
+                            {
+                                "track": 10,
+                                "file": "Yankee_Doodle"
+                            },
+                            {
+                                "track": 11,
+                                "file": "FO3_JHE_Speech_ColonelsRestoration"
+                            },
+
+                            {
+                                "track": 12,
+                                "file": "Battle_Hymn_of_the_Republic"
+                            }, 
+                            {
+                                "track": 13,
+                                "file": "Hail_Columbia"
+                            }, 
+                            {
+                                "track": 14,
+                                "file": "Dixie"
+                            }, 
+                            {
+                                "track": 15,
+                                "file": "FO3_JHE_Speech_RebuildWasteland"
+                            }, 
+                            
+                            {
+                                "track": 16,
+                                "file": "Halls_of_Montezuma"
+                            }, 
+                            {
+                                "track": 17,
+                                "file": "Stars_and_Stripes_Forever"
+                            }, 
+                            {
+                                "track": 18,
+                                "file": "My_Country_Tis_of_Thee"
+                            }, 
+
+                            {
+                                "track": 19,
+                                "file": "FO3_JHE_Speech_TakeATally"
+                            },
+
+                            {
+                                "track": 20,
+                                "file": "Yankee_Doodle"
+                            },
+                            {
+                                "track": 21,
+                                "file": "The_Washington_Post"
+                            }, 
+                            {
+                                "track": 22,
+                                "file": "FO3_JHE_Speech_TalkAboutGovernment"
+                            }, 
+                            {
+                                "track": 23,
+                                "file": "My_Country_Tis_of_Thee"
+                            }, 
+                        ],
+                        trackCount = tracks.length,
+                        audio = $('#audio1').bind('play', function () {
+                            playing = true;
+                        }).bind('pause', function () {
+                            playing = false;
+                        }).bind('ended', function () {
+                            if ((index + 1) < trackCount) {
+                                index++;
+                                loadTrack(index);
+                                audio.play();
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }).get(0),
+                        loadTrack = function (id) {
+                            index = id;
+                            audio.src = mediaPath + tracks[id].file + extension;
+                        },
+                        playTrack = function (id) {
+                            loadTrack(id);
+                            audio.play();
+                        };
+                    extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+                    loadTrack(index);
+                }
+            });
+        </script>
+    </body>
+</html>
